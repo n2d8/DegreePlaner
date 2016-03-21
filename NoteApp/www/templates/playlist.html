@@ -1,0 +1,18 @@
+<ion-view view-title="Playlist">
+
+  <ion-content ng-init="getNote()">
+
+
+    <div class="list">
+    	<li ng-repeat="note in notes">
+    		<p>{{note.title}}</p>
+    		<p>{{note.content}}</p>
+    	</li>
+
+    </div>
+
+
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view view-title="Create">
+  <ion-content>
+  <ion-form>
+    <label class="item item-input item-stacked-label">
+    	<span class="input-label">Title</span>
+    	<input type="text" placeholder="Your Note Title" ng-model="title2" ng-maxlength="40" required>
+  	</label>
+
+  	<label class="item item-input item-stacked-label">
+    	<span class="input-label">Content</span>
+    	<textarea msd-elastic input type="text" placeholder="Your Note Content" ng-model="content2" required>
+  	</label>
+
+  <!-- <label class="item item-input item-floating-label">
+    <span class="input-label">Context</span>
+    <textarea msd-elastic id="TextArea" ng-model="Hello" placeholder="Context"></textarea>
+  </label -->
+  </ion-form>
+
+  <button class="button button-full button-royal" ng-click="saveNote(title2, content2); showConfirm();">
+  	Save Note
+  </button>
+
+  <button class="button button-full button-calm" ng-click="getNote()">
+  	Get Note
+  </button>
+
+
+  </ion-content>
+
+
+</ion-view>

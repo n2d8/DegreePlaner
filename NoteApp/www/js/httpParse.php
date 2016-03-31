@@ -1,6 +1,7 @@
 <?php
 include('simple_html_dom.php');
 
+function getCourses(){
 $link = 'http://www.calendar.ubc.ca/vancouver/courses.cfm?page=institution';
 $html = file_get_html($link);
 $counter = false;
@@ -38,6 +39,7 @@ foreach($html->find('td') as $element){
 		}
 		$counter = false;
 	}
+}
 }
 
 function isAbbr($string){

@@ -52,5 +52,5 @@ function isAbbr($string){
 	return $len == strlen($match[0]);
 }
 
-var_dump(getCourses());
+
 ?>

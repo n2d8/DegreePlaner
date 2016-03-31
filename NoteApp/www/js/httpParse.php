@@ -1,5 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: *'); 
 include('simple_html_dom.php');
 
 //function getCourses(){

@@ -1,7 +1,8 @@
 <?php
+header('Access-Control-Allow-Origin: *'); 
 include('simple_html_dom.php');
 
-function getCourses(){
+//function getCourses(){
 $link = 'http://www.calendar.ubc.ca/vancouver/courses.cfm?page=institution';
 $html = file_get_html($link);
 $counter = false;
@@ -39,8 +40,9 @@ foreach($html->find('td') as $element){
 		$counter = false;
 	}
 }
-return $rtn;
-}
+echo $_GET['callback']."(".json_encode($rtn).");";
+//return json_encode($rtn);
+//}
 
 function isAbbr($string){
 	$match = array();

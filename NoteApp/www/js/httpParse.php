@@ -5,12 +5,13 @@ function getCourses(){
 $link = 'http://www.calendar.ubc.ca/vancouver/courses.cfm?page=institution';
 $html = file_get_html($link);
 $counter = false;
+$rtn = array();
+$fac = "";
 foreach($html->find('td') as $element){
 	$text =  $element->innertext;
 	if(strpos($text, "Faculty")===0|| strpos($text, "Vancouver")===0|| strpos($text, "School")===0|| strpos($text, "Centre") ===0){
 		$counter = true;
-		echo $text;
-		echo "\n";
+		$fac = $text;
 	}else{
 		if($counter){
 			$matches = array();
@@ -20,26 +21,25 @@ foreach($html->find('td') as $element){
 			$pre = substr($link, 0, 37);
 			$html2 = file_get_html($pre.$href);
 			$flag = 0;
-			$count = 0;
+			$abbr = "";
+			$courses = array();
 			foreach($html2->find('a') as $ele){
 				$current = $ele->innertext;
 				if($flag == 1){
-					echo $current;
-					echo "\n";
+					$abbr = $current;
 					$flag = 0;
-					$count ++;
 				}
 				if(isAbbr($current)){
-					echo $current." - ";
+					$courses[$abbr] = $current;
 					$flag = 1;
 				}
 			}
-			echo "Course Count: ".$count;
-			echo "\n\n";
+			$rtn[$fac] = $courses;
 		}
 		$counter = false;
 	}
 }
+return $rtn;
 }
 
 function isAbbr($string){
@@ -51,4 +51,6 @@ function isAbbr($string){
 	preg_match('/[A-Z]*/', $string, $match);
 	return $len == strlen($match[0]);
 }
+
+var_dump(getCourses());
 ?>

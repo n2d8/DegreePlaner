@@ -25,11 +25,11 @@ foreach($html->find('td') as $element){
 			foreach($html2->find('a') as $ele){
 				$current = $ele->innertext;
 				if($flag == 1){
-					$abbr = $current;
+					$courses[$abbr] = $current;
 					$flag = 0;
 				}
 				if(isAbbr($current)){
-					$courses[$abbr] = $current;
+					$abbr = $current;
 					$flag = 1;
 				}
 			}
@@ -37,6 +37,7 @@ foreach($html->find('td') as $element){
 		}
 		$counter = false;
 	}
+	var_dump($rtn);
 	$json_code = json_encode($rtn);
 	$myfile = fopen("data.json", "w");
 	fwrite($myfile, json_encode($rtn));
